@@ -1,0 +1,81 @@
+# E-Commerce Sales Analysis
+
+## 📌 Project Overview
+
+This project analyzes an e-commerce sales dataset using **MySQL and Power BI**.
+
+The goal of the project is to analyze sales performance, orders, revenue, profit, returns, categories, and regional performance and present the results through an interactive Power BI dashboard.
+
+The project follows a complete data analytics workflow:
+
+**Raw Data → SQL Analysis → Power BI Dashboard**
+
+---
+
+## 🛠️ Tools & Technologies
+
+- **MySQL** – Data analysis and SQL queries
+- **Power BI** – Dashboard and data visualization
+- **Power Query** – Data preparation and transformation
+- **DAX** – Measures and calculations
+- **CSV** – Dataset
+- **GitHub** – Project version control
+
+---
+
+## 📂 Dataset
+
+The dataset contains e-commerce transaction information including:
+
+- Order ID
+- Customer ID
+- Product ID
+- Category
+- Region
+- Quantity
+- Price
+- Discount
+- Total Amount
+- Shipping Cost
+- Profit Margin
+- Return Status
+- Order Date
+- Customer information
+- Payment Method
+- Delivery Time
+
+---
+
+## 🔎 SQL Analysis
+
+The dataset was loaded into MySQL and analyzed using SQL.
+
+The analysis includes:
+
+- Revenue analysis
+- Order analysis
+- Category performance
+- Regional performance
+- Return analysis
+- Customer analysis
+- Aggregations using `GROUP BY`
+- Filtering using `HAVING`
+- CTEs
+- Window functions
+- Ranking using `RANK()`
+
+Example:
+
+```sql
+WITH category_sales AS (
+    SELECT
+        category,
+        SUM(total_amount) AS revenue
+    FROM e_sales
+    GROUP BY category
+)
+SELECT
+    category,
+    revenue,
+    RANK() OVER (ORDER BY revenue DESC) AS revenue_rank
+FROM category_sales;
